@@ -8,35 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var assignment = ["First Assignment", "Second Assingment", "Third Assignment", "Fourth Assignment", "Fifth Assignment"]
+    @ObservedObject var assignmentsToDo = AssignmentList()
     var body: some View {
         NavigationView {
             List {
-                ForEach(assignment, id: \.self) { thing in
-                    Text(thing)
+                ForEach(assignmentsToDo.assignments) { item in
+                    VStack(alignment: .leading) {
+                        Text(item.priority)
+                            .font(.headline)
+                        Text(item.description)
+                    }
+                    Spacer()
+                    Text(item.dueDate, style: .date)
                 }
                 .onMove { indices, newOffset in
-                    assignment.move(fromOffsets: indices, toOffset: newOffset)
+                    assignmentsToDo.assignments.move(fromOffsets: indices, toOffset: newOffset)
                 }
                 .onDelete { indexSet in
-                    assignment.remove(atOffsets: indexSet)
+                    assignmentsToDo.assignments.remove(atOffsets: indexSet)
                 }
-                .navigationBarTitle("Assignment", displayMode: .inline)
-                .navigationBarItems(leading: EditButton())
             }
+            .navigationBarTitle("To Do List")
+            .navigationBarItems(leading: EditButton())
         }
+        
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
 
-struct AssignmentNotebook: Identifiable, Codable {
+struct Assignment: Identifiable, Codable {
     var id = UUID()
     var priority = String()
     var description = String()
     var dueDate = Date()
 }
-

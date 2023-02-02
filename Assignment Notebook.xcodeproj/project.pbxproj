@@ -12,6 +12,7 @@
 		4616A8052982D30B00823A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4616A8042982D30B00823A57 /* Assets.xcassets */; };
 		4616A8082982D30B00823A57 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4616A8072982D30B00823A57 /* Preview Assets.xcassets */; };
 		4616A80F2982D34A00823A57 /* AssignmentNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616A80E2982D34A00823A57 /* AssignmentNotebook.swift */; };
+		4616A813298C10C400823A57 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616A812298C10C400823A57 /* AddItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		4616A8042982D30B00823A57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4616A8072982D30B00823A57 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4616A80E2982D34A00823A57 /* AssignmentNotebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentNotebook.swift; sourceTree = "<group>"; };
+		4616A812298C10C400823A57 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 		4616A7F42982D30900823A57 = {
 			isa = PBXGroup;
 			children = (
+				4616A812298C10C400823A57 /* AddItemView.swift */,
 				4616A7FF2982D30900823A57 /* Assignment Notebook */,
 				4616A7FE2982D30900823A57 /* Products */,
 			);
@@ -143,6 +146,7 @@
 				4616A8032982D30900823A57 /* ContentView.swift in Sources */,
 				4616A8012982D30900823A57 /* Assignment_NotebookApp.swift in Sources */,
 				4616A80F2982D34A00823A57 /* AssignmentNotebook.swift in Sources */,
+				4616A813298C10C400823A57 /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
