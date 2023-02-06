@@ -8,30 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var assignmentsToDo = AssignmentList()
+    @ObservedObject var assignmentList = AssignmentList()
+    @State private var showingAddItemView = false
     var body: some View {
         NavigationView {
             List {
-                ForEach(assignmentsToDo.assignments) { item in
-                    VStack(alignment: .leading) {
-                        Text(item.priority)
-                            .font(.headline)
-                        Text(item.description)
+                ForEach(assignmentList.assignments) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.description)
+                        }
+                        Spacer()
+                        Text(item.dueDate, style: .date)
                     }
-                    Spacer()
-                    Text(item.dueDate, style: .date)
                 }
                 .onMove { indices, newOffset in
-                    assignmentsToDo.assignments.move(fromOffsets: indices, toOffset: newOffset)
+                    assignmentList.assignments.move(fromOffsets: indices, toOffset: newOffset)
                 }
                 .onDelete { indexSet in
-                    assignmentsToDo.assignments.remove(atOffsets: indexSet)
+                    assignmentList.assignments.remove(atOffsets: indexSet)
                 }
             }
-            .navigationBarTitle("To Do List")
-            .navigationBarItems(leading: EditButton())
+            .sheet(isPresented: $showingAddItemView, content: {
+                AddItemView(assignmentList: assignmentList)
+            })
+            .navigationBarTitle("Assignments To Do", displayMode: .inline)
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+                showingAddItemView = true}) {
+                    Image(systemName: "plus")
+            })
         }
-        
     }
 }
 
@@ -43,7 +49,6 @@ struct ContentView_Previews: PreviewProvider {
 
 struct Assignment: Identifiable, Codable {
     var id = UUID()
-    var priority = String()
     var description = String()
     var dueDate = Date()
 }
